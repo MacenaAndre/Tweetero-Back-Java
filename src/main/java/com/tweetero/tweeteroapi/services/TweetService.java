@@ -1,6 +1,7 @@
 package com.tweetero.tweeteroapi.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,9 +18,13 @@ public class TweetService {
     private UserService userService;
 
     public void postTweet(TweetDTO tweet) {
-        User user = userService.getUser(tweet.username());
+        Optional<User> user = userService.getUser(tweet.username());
 
-        TweeteroapiApplication.tweetRpostitory.createTweet(new Tweet(tweet.username(), user.getAvatar(), tweet.text()));
+        if(user.isPresent()) {
+            String avatar = user.get().getAvatar();
+
+            TweeteroapiApplication.tweetRpostitory.createTweet(new Tweet(tweet.username(), avatar, tweet.text()));
+        }
     }
 
     public List<Tweet> listAllUserTweets(String username) {

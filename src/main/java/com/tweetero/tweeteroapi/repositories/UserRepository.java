@@ -2,6 +2,7 @@ package com.tweetero.tweeteroapi.repositories;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import com.tweetero.tweeteroapi.dto.UserDTO;
 import com.tweetero.tweeteroapi.models.User;
@@ -13,7 +14,7 @@ public class UserRepository {
         users.add(new User(user));
     }
 
-    public User findUserByUsername(String username) {
+    public Optional<User> findUserByUsername(String username) {
 
         User user = new User();
 
@@ -21,12 +22,11 @@ public class UserRepository {
 
             if(users.get(i).getUsername().equals(username)) {
 
-                return users.get(i);
+                user = users.get(i);
             }
         }
 
-        System.out.println(user);
-        return user;
+        return Optional.ofNullable(user);
         
     }
 }

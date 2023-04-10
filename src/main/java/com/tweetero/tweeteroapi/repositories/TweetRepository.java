@@ -28,7 +28,7 @@ public class TweetRepository {
 
     public List<Tweet> findTweetsByPage(int page) {
         int first = tweets.size() - (page * 5);
-        int last = first - 4;
+        int last = first + 4;
 
         if(first < 0) {
             first = 0;
@@ -37,8 +37,8 @@ public class TweetRepository {
         if(last >= tweets.size()) {
             last = tweets.size() - 1;
         }
-
-        return tweets.subList(last, first);
+        
+        return tweets.subList(first, (last+1));
 
     }
 }

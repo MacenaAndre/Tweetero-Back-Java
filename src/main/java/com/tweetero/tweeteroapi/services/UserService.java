@@ -1,5 +1,7 @@
 package com.tweetero.tweeteroapi.services;
 
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 
 import com.tweetero.tweeteroapi.TweeteroapiApplication;
@@ -15,7 +17,7 @@ public class UserService {
 
     }
 
-    public User getUser(String username) {
+    public Optional<User> getUser(String username) {
 
         return TweeteroapiApplication.userRepository.findUserByUsername(username);
 
