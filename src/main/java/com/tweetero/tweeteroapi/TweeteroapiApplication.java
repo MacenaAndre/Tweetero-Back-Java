@@ -3,6 +3,8 @@ package com.tweetero.tweeteroapi;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.tweetero.tweeteroapi.repositories.UserRepository;
+
 @SpringBootApplication
 public class TweeteroapiApplication {
 
@@ -10,4 +12,5 @@ public class TweeteroapiApplication {
 		SpringApplication.run(TweeteroapiApplication.class, args);
 	}
 
+	public static final UserRepository userRepository = new UserRepository();
 }
