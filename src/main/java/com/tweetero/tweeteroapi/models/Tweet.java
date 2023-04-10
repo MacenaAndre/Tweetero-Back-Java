@@ -1,14 +1,12 @@
 package com.tweetero.tweeteroapi.models;
 
-import com.tweetero.tweeteroapi.dto.TweetDTO;
-
 public class Tweet extends User{
     private String text;
 
-    public Tweet(TweetDTO tweet) {
-        this.text = tweet.text();
-        super.setUsername(tweet.username());
-        super.setAvatar(tweet.avatar());
+    public Tweet(String username, String avatar, String text) {
+        this.text = text;
+        super.setUsername(username);
+        super.setAvatar(avatar);
     }
 
     public String getText() {
